@@ -130,7 +130,7 @@ resource "aws_launch_configuration" "web-launch-group" {
   instance_type = "t2.micro" 
   key_name = "${var.sshKey}"
   enable_monitoring = true 
-  user_data = "#!/bin/bash\nsudo yum install -y nfs-utils\nsudo mkdir ~/web-content\nsudo mount -t nfs ${aws_efs_file_system.web-content.dns_name}:/ ~/web-content\nsudo yum install -y httpd\nsudo sed -i 's/^DocumentRoot .*/DocumentRoot ~/web-content/' /etc/httpd/conf/httpd.conf\nsystemctl start httpd\nsudo touch ~/web-content/index.html\nsudo chmod 744 ~/web-content/*\nsudo echo 'To InfinitiCG and Beyound'>~/web-content/index.html"
+  user_data = "#!/bin/bash\nsudo yum install -y nfs-utils\nsudo mkdir ~/web-content\nsudo mount -t nfs ${aws_efs_file_system.web-content.dns_name}:/ ~/web-content\nsudo yum install -y httpd\nsudo ln -s ~/web-content files\nsudo sed -i 's/^DocumentRoot .*/DocumentRoot files/' /etc/httpd/conf/httpd.conf\nsudo systemctl start httpd"
   security_groups = ["${aws_security_group.web-ec2.id}"]
 }
 
