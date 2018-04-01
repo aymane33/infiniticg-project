@@ -1,7 +1,7 @@
 # infiniticg-project
 This project is intended for demo purposes only.  It is intended for InfinitiCG review/use only. 
  Here are a few points about the solution
-- This code is wrriten in terraform, so user needs to download and set up terraform.
+- This code is wrriten in terraform, so user needs to download and set up terraform on his/her development machine to run it.
 - Code was built on Linux rhel 7.x , though this should not matter.
 - Web tier (auto scaling group for HA and elasticity) uses linux rhel 7.4 and httpd/apache server.
 - User needs to edit vars.tfvar with his own vpc and subnet info. If other region that is not us-west-2 is chosen, edit the ec2AMI variable
