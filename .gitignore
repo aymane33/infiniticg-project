@@ -1,0 +1,8 @@
+#project/ide files
+.idea
+.terraform
+credentials
+*.tfstate*
+#Dont put the plan files in git, they contain credentials
+*plan
+
